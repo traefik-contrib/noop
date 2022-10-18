@@ -30,6 +30,7 @@ func New(_ context.Context, next http.Handler, config *Config, name string) (htt
 	if config.ResponseCode < 100 || config.ResponseCode > 999 {
 		return nil, errors.New("invalid response code")
 	}
+
 	return &Noop{
 		responseCode: config.ResponseCode,
 		next:         next,

@@ -1,4 +1,4 @@
-# Traefik noop
+# Traefik Noop
 
 This plugin can be used to send response without the request to servers. The response code can be configured.
 
@@ -38,7 +38,7 @@ http:
       loadBalancer:
         servers:
           - url: http://127.0.0.1:5000
-  
+
   middlewares:
     my-plugin:
       plugin:

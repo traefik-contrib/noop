@@ -4,7 +4,9 @@ type: middleware
 
 import: github.com/traefik-contrib/noop
 
-summary: 'Noop traefik middleware'
+summary: |
+  This plugin can be used to send response without the request to servers.
+  The response code can be configured.
 
 testData:
   responseHeader: 200

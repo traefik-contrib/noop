@@ -6,7 +6,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	noop "github.com/traefik-contrib/noop"
+	"github.com/traefik-contrib/noop"
 )
 
 func TestNoop(t *testing.T) {
@@ -45,7 +45,7 @@ func TestNoop(t *testing.T) {
 			handler, err := noop.New(ctx, next, test.cfg, "noop")
 			if test.expectedErr {
 				if err == nil {
-					t.Fatal("error expectd")
+					t.Fatal("error expected")
 				}
 			} else {
 				recorder := httptest.NewRecorder()
