@@ -1,12 +1,10 @@
-displayName: Demo Plugin
+displayName: Noop
 type: middleware
-iconPath: .assets/icon.png
+#iconPath: .assets/icon.png
 
-import: github.com/traefik/plugindemo
+import: github.com/traefik-contrib/noop
 
-summary: '[Demo] Add Request Header'
+summary: 'Noop traefik middleware'
 
 testData:
-  Headers:
-    X-Demo: test
-    X-URL: '{{URL}}'
+  responseHeader: 200

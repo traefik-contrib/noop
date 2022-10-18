@@ -1,3 +1,3 @@
-module github.com/traefik/plugindemo
+module github.com/traefik-contrib/noop
 
-go 1.17
+go 1.19
