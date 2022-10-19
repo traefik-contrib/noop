@@ -1,10 +1,10 @@
-# Traefik Noop
+# Noop
 
-This plugin can be used to send response without the request to servers. The response code can be configured.
+A plugin that always answer the same status code without calling a service/server.
+
+The response code can be configured.
 
 ### Configuration
-
-For each plugin, the Traefik static configuration must define the module name (as is usual for Go packages).
 
 The following declaration (given here in YAML) defines a plugin:
 
@@ -15,7 +15,7 @@ experimental:
   plugins:
     noop:
       moduleName: github.com/traefik-contrib/noop
-      version: v0.0.2
+      version: v0.1.0
 ```
 
 Here is an example of a file provider dynamic configuration (given here in YAML), where the interesting part is the `http.middlewares` section:

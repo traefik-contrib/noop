@@ -5,7 +5,7 @@ iconPath: .assets/icon.png
 import: github.com/traefik-contrib/noop
 
 summary: |
-  This plugin can be used to send response without the request to servers.
+  A plugin that always answer the same status code without calling a service/server.
   The response code can be configured.
 
 testData:
