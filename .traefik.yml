@@ -1,6 +1,6 @@
 displayName: Noop
 type: middleware
-#iconPath: .assets/icon.png
+iconPath: .assets/icon.png
 
 import: github.com/traefik-contrib/noop
 
