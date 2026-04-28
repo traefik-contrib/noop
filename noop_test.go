@@ -35,12 +35,11 @@ func TestNoop(t *testing.T) {
 	}
 
 	for _, test := range testCases {
-		test := test
 		t.Run(test.desc, func(t *testing.T) {
 			t.Parallel()
 
 			ctx := context.Background()
-			next := http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {})
+			next := http.HandlerFunc(func(_ http.ResponseWriter, _ *http.Request) {})
 
 			handler, err := noop.New(ctx, next, test.cfg, "noop")
 			if test.expectedErr {

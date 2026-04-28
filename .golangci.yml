@@ -1,76 +1,78 @@
-run:
-  timeout: 3m
-  skip-files: []
-  skip-dirs: []
-
-linters-settings:
-  govet:
-    enable-all: true
-    disable:
-      - fieldalignment
-  golint:
-    min-confidence: 0
-  gocyclo:
-    min-complexity: 12
-  goconst:
-    min-len: 5
-    min-occurrences: 4
-  misspell:
-    locale: US
-  funlen:
-    lines: -1
-    statements: 50
-  godox:
-    keywords:
-      - FIXME
-  gofumpt:
-    extra-rules: true
+version: "2"
 
 linters:
-  enable-all: true
+  default: all
   disable:
-    - deadcode # deprecated
-    - exhaustivestruct # deprecated
-    - golint # deprecated
-    - ifshort # deprecated
-    - interfacer # deprecated
-    - maligned # deprecated
-    - nosnakecase # deprecated
-    - scopelint # deprecated
-    - scopelint # deprecated
-    - structcheck # deprecated
-    - varcheck # deprecated
-    - sqlclosecheck # not relevant (SQL)
-    - rowserrcheck # not relevant (SQL)
-    - execinquery # not relevant (SQL)
-    - cyclop # duplicate of gocyclo
-    - bodyclose # Too many false positives: https://github.com/timakin/bodyclose/issues/30
+    - bodyclose # Too many false positives
+    - cyclop
     - dupl
-    - testpackage
-    - tparallel
-    - paralleltest
-    - nlreturn
-    - wsl
+    - err113
     - exhaustive
     - exhaustruct
-    - goerr113
-    - wrapcheck
-    - noctx
-    - lll
-    - gomnd
     - forbidigo
+    - lll
+    - mnd
+    - nlreturn
+    - noctx
+    - paralleltest
+    - rowserrcheck # not relevant (SQL)
+    - sqlclosecheck # not relevant (SQL)
+    - testpackage
+    - tparallel
     - varnamelen
+    - wrapcheck
+    - wsl
+
+  settings:
+    depguard:
+      rules:
+        main:
+          deny:
+            - pkg: github.com/instana/testify
+              desc: not allowed
+            - pkg: github.com/pkg/errors
+              desc: Should be replaced by standard lib errors package
+    funlen:
+      lines: -1
+      statements: 50
+    goconst:
+      min-len: 5
+      min-occurrences: 4
+    gocyclo:
+      min-complexity: 12
+    godox:
+      keywords:
+        - FIXME
+    govet:
+      disable:
+        - fieldalignment
+      enable-all: true
+    misspell:
+      locale: US
+
+  exclusions:
+    warn-unused: false
+    presets:
+      - std-error-handling
+      - comments
+      - common-false-positives
+    rules:
+      - linters:
+          - funlen
+          - goconst
+          - godot
+        path: (.+)_test.go
 
 issues:
-  exclude-use-default: false
-  max-per-linter: 0
   max-same-issues: 0
-  exclude:
-    - 'package-comments: should have a package comment'
-    - ST1000
-  exclude-rules:
-    - path: (.+)_test.go
-      linters:
-        - goconst
-        - funlen
-        - godot
+  max-issues-per-linter: 0
+
+formatters:
+  enable:
+    - gci
+    - gofumpt
+    - goimports
+  settings:
+    gofumpt:
+      extra-rules: true
+
